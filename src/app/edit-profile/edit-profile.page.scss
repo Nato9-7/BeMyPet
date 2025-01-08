@@ -1,0 +1,39 @@
+
+ion-toolbar{
+  --background: #FF9800;
+  --color: white;
+}
+
+ion-button{
+  --background: #FF9800;
+  margin-top: 20px;
+}
+
+
+input[type="text"] {
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    margin: 0 0 20px 10px;
+    border: 1px solid #0d0101;
+}
+
+input[type="date"] {
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    border: 1px solid #0d0101;
+  }
+
+select {
+    resize: none;
+    overflow-y: visible;
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    border: 1px solid #0d0101;
+  }

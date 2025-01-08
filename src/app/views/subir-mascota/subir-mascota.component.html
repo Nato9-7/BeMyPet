@@ -1,0 +1,106 @@
+<ion-button id="open-form" expand="block" fill="solid">
+  Agregar mascota
+</ion-button>
+
+<!-- Modal -->
+<ion-modal #modal trigger="open-form">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Agregar nueva mascota</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modal.dismiss()" (click)="cerrarFormulario()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-card>
+        <ion-card-content>
+          <form (ngSubmit)="guardarMascota()">
+            <!-- Nombre de la mascota -->
+            <ion-item>
+              <ion-input placeholder="Nombre" [(ngModel)]="nombre" name="nombre" required></ion-input>
+            </ion-item>
+
+            <!-- Tipo de mascota -->
+            <ion-item>
+              <ion-list>
+                <ion-item>
+                  <ion-select [(ngModel)]="tipo" name="tipo" placeholder="¿Qué tipo de animal es?" [multiple]="false" required>
+                    <ion-select-option value="Perro">Perro</ion-select-option>
+                    <ion-select-option value="Gato">Gato</ion-select-option>
+                    <ion-select-option value="Otro">Otro</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-item>
+
+            <!-- Edad de la mascota -->
+            <ion-item>
+              <ion-input placeholder="Edad" type="number" [(ngModel)]="edad" name="edad" required></ion-input>
+            </ion-item>
+
+            <!-- Género de la mascota -->
+            <ion-item>
+              <ion-list>
+                <ion-item>
+                  <ion-select aria-label="Género" placeholder="Género" [multiple]="false" [(ngModel)]="genero" name="genero" required>
+                    <ion-select-option value="Macho">Macho</ion-select-option>
+                    <ion-select-option value="Hembra">Hembra</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-item>
+
+            <!-- Descripción física de la mascota -->
+            <ion-item>
+              <ion-textarea placeholder="Descripción física" [(ngModel)]="descripcion_fisica" name="descripcion_fisica" required></ion-textarea>
+            </ion-item>
+
+            <!-- Descripción de la personalidad de la mascota -->
+            <ion-item>
+              <ion-textarea placeholder="Descripción de la personalidad" [(ngModel)]="descripcion_personalidad" name="descripcion_personalidad"></ion-textarea>
+            </ion-item>
+
+            <!-- Esterilizado -->
+            <ion-item>
+              <ion-label>¿Está esterilizado?</ion-label>
+              <ion-toggle [(ngModel)]="esterilizado" name="esterilizado"></ion-toggle>
+            </ion-item>
+
+            <!-- Region -->
+            <ion-item>
+              <ion-input placeholder="Región" [(ngModel)]="region" name="region" required></ion-input>
+            </ion-item>
+
+            <!-- Comuna -->
+            <ion-item>
+              <ion-input placeholder="Comuna" [(ngModel)]="comuna" name="comuna" required></ion-input>
+            </ion-item>
+
+            <!-- Mostrar la imagen seleccionada -->
+            <ion-item *ngIf="imageUrl">
+              <img [src]="imageUrl" class="foto-img" />
+            </ion-item>
+
+            <!-- Botón para tomar foto -->
+            <ion-button (click)="tomarFoto()" expand="block" fill="solid">
+              Agregar foto
+            </ion-button>
+
+            <!-- Botón para guardar -->
+            <ion-button type="submit" expand="block" fill="solid" [disabled]="!nombre || !imageUrl" (click)="modal.dismiss()">
+              Guardar mascota
+            </ion-button>
+
+            <!-- Botón para cancelar -->
+            <ion-button (click)="modal.dismiss()" expand="block" fill="outline">
+              Cancelar
+            </ion-button>
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ng-template>
+</ion-modal>

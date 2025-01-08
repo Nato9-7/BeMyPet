@@ -1,0 +1,30 @@
+ion-content{
+    top: 30%;
+}
+
+form{
+    margin: 10px;
+}
+
+ion-item{
+    margin-bottom: 10px;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto; /* Centrar horizontalmente */
+  padding-top: 0;
+  margin-top: 0;
+  width: 150px; /* Ajusta el tamaño del logo si es necesario */
+  height: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #F15A59;
+}
+
+.iniciar-sesion{
+    margin-top: 20px;
+    --background: #FF9800;
+}

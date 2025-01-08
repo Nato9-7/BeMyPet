@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>BeMyPet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-img src="../../assets/icon/bemypet-logo.png" class="logo"></ion-img>
+
+  <form [formGroup]="signupForm" (ngSubmit)="signup()">
+    <ion-item lines="full">
+      <ion-input formControlName="userName" type="text" placeholder="Nombre"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full" class="date">
+      <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+      <input type="date" id="fecha-nacimiento" formControlName="birthDate" >
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-input formControlName="email" type="email" placeholder="Ingresa tu correo"></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-input formControlName="password" type="password" placeholder="Ingresa tu contraseña"></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col class="ion-text-left">
+        <ion-button expand="block" size="default" type="submit" id="present-alert" [disabled]="signupForm.invalid">Crear cuenta</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

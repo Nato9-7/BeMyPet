@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>BeMyPet</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content [fullscreen]="true">
+
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="heading">
+    <h3>Encuentra a la <span>mascota</span></h3>
+    <h3><span>perfecta</span> para ti</h3>
+  </div>
+  <div class="profile-cards">
+    <ion-card *ngIf="mascotas.length > 0">
+      <img [src]="mascotas[mascotaActualIndex].imagen" alt="">
+      <ion-card-header class="mascota-info">
+        <p>{{mascotas[mascotaActualIndex].nombre}}, {{mascotas[mascotaActualIndex].edad}}</p>
+        <p>{{mascotas[mascotaActualIndex].region}}</p>
+      </ion-card-header>
+  
+      
+    </ion-card>
+    <ion-item>
+      <ion-button class="no-match" (click)="noMatch(mascotas[mascotaActualIndex])" fill="clear" slot="start"  shape="round">
+        <ion-icon name="close-circle"  slot="icon-only"></ion-icon> 
+      </ion-button>
+      <ion-button class="match" (click)="hacerMatch(mascotas[mascotaActualIndex])" fill="clear" slot="end"  shape="round"> 
+        <ion-icon name="heart-circle"  slot="icon-only"></ion-icon> 
+      </ion-button>
+
+    </ion-item>
+
+  
+  </div>
+  <div class="story-section"> 
+    <div id="divider">
+      <p></p>
+    </div>
+    <h3>Nuevas Mascotas</h3>
+
+    <div class="stories">
+      <div class="story" *ngFor="let nuevaMascota of nuevas_Mascotas">
+        <ion-avatar>
+          <img [src]="nuevaMascota.foto" alt="{{nuevaMascota.nombre}}">
+        </ion-avatar>
+        <p>{{nuevaMascota.nombre}}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

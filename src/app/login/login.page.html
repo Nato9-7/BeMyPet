@@ -1,0 +1,24 @@
+
+
+<ion-content class="ion-no-padding">
+  <ion-img src="../../assets/icon/bemypet-logo.png" class="logo" ></ion-img>
+  <form (ngSubmit)="login()">
+    <ion-item lines="full">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input [(ngModel)]="username" name="username" required placeholder="Ingresa tu nombre de usuario"></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input [(ngModel)]="password" name="password" type="password" required placeholder="Ingresa tu contraseña"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-col class="ion-text-left">
+        <a [routerLink]="['/reset-password']">Reestablecer contraseña</a>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <a shape="default" fill="clear" size="default" [routerLink]="['/signup']">Crear cuenta</a>
+      </ion-col>
+    </ion-row>
+    <ion-button shape="default" type="submit" class="iniciar-sesion"  expand="block">Iniciar sesión</ion-button>
+  </form>
+</ion-content>

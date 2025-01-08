@@ -1,0 +1,8 @@
+{
+  "name": "bemypet",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

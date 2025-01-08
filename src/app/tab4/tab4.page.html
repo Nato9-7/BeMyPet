@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-button fill="solid" class="logout-button" slot="end" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col size="3" class="profile-container">
+        <ion-avatar>
+          <img [src]="fotoPerfil" >
+        </ion-avatar>
+        <app-foto (fotoSeleccionada)="actualizarFotoPerfil($event)" class="photo-icon"></app-foto>
+      </ion-col>
+      
+      <ion-col size="9" class="ion-text-wrap">
+        <ion-card-title *ngFor="let user of userDetails">{{ user.username }}, {{ user.age }}</ion-card-title>
+        <ion-card-subtitle>Amante de</ion-card-subtitle>
+
+        <ion-row *ngIf="selectedCategories.length > 0">
+          <div *ngFor="let category of selectedCategories">
+            <ion-badge>{{ category }}</ion-badge>
+          </div>
+        </ion-row>
+        <ion-card-content id="biografia" placeholder="Biografía" required>
+          <div *ngFor="let user of userDetails">{{ user.biografia }}</div>  
+        </ion-card-content>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button  fill="solid" class="circular-button" expand="block" [routerLink]="['/edit-profile']">
+          Editar perfil
+        </ion-button>
+      </ion-col>
+      <ion-col>
+          <app-subir-mascota (mascotaGuardada)="guardarAnimal($event)" class="agregar-mascota"></app-subir-mascota>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let mascota of mascotas; let i = index" size="6">
+        <ion-card>
+          <!-- Imagen con tamaño ajustado -->
+          <img [src]="mascota.foto" class="foto-img" />
+  
+          <ion-card-header>
+            <ion-card-title>{{ mascota.nombre }}</ion-card-title>
+          </ion-card-header>
+      
+          <ion-button id="{{ mascota.nombre }}" expand="block">Detalles</ion-button>
+
+          <ion-modal #modal trigger="{{ mascota.nombre }}">
+            <ng-template>
+              <ion-content>
+                <ion-toolbar>
+                  <ion-title>Detalles</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button color="light" (click)="modal.dismiss()">Cerrar</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+                <ion-list>
+                  <ion-item>
+                    <ion-avatar slot="start">
+                      <ion-img [src]="mascota.foto" ></ion-img>
+                    </ion-avatar>
+                    <ion-label>
+                      <h2>{{ mascota.nombre }}</h2>
+                      <p>{{ mascota.tipo }}</p>
+                      <p>{{ mascota.edad }} años</p>
+                      <p>{{ mascota.genero }}</p>
+                      <p>{{ mascota.descripcion_fisica }}</p>
+                      <p>{{ mascota.descripcion_personalidad }}</p>
+                      <p>¿Esterilizado? {{ mascota.esterilizado ? 'Sí' : 'No' }}</p>
+                      <p>Ubicación: {{ mascota.region }}, {{ mascota.comuna }}</p>
+                    </ion-label>
+                    
+                    <ion-button (click)="eliminarMascota(i)" color="danger" fill="clear" id="eliminarMascota" shape="round" slot="end" (click)="modal.dismiss()">
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </ion-button>
+                  </ion-item>
+                </ion-list>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>

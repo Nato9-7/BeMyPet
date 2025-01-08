@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab4"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <form [formGroup]="edit_profile" (ngSubmit)="editprofile()">
+    
+    <ion-item>
+      <ion-label position="stacked" for="username">Nombre de usuario:</ion-label>
+      <ion-input formControlName="username" type="text" name="username" placeholder="Introduce tu nombre de usuario" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" for="biografia">Biografía:</ion-label>
+      <ion-input formControlName="biografia" type="text" name="biografia" placeholder="Escribe una breve biografía" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked" for="mascota">Mascota:</ion-label>
+      <ion-select formControlName="category" multiple="true" interface="popover" (ionChange)="handleChange($event)">
+        <ion-select-option value="perros">Perro</ion-select-option>
+        <ion-select-option value="gatos">Gato</ion-select-option>
+        <ion-select-option value="otros">Otro</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="block" size="default" type="submit" (edit)="editprofile()" routerLink="/tabs/tab4">Editar</ion-button>
+  </form>
+
+  <ion-button expand="block" size="default" routerLink="/reset-password">
+    Reestablecer contraseña
+  </ion-button>
+</ion-content>

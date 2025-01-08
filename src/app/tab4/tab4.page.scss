@@ -1,0 +1,95 @@
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.logout-button{
+  width: 20%;
+}
+
+ion-avatar {
+  width: 25vw;
+  height: 25vw;
+  margin: 10px 10px 0 0;
+  border: 3px solid #0d0101;
+}
+
+.photo-icon {
+  position: absolute;
+  top: -10%;  
+  left: -25%; 
+}
+
+  ion-badge{
+    margin-left: 15px;
+  }
+
+  ion-card-title{
+    margin-left: 15px;
+  }
+
+  
+ion-button {
+    width: 80%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    --background: #FF9800;
+  }
+
+  ion-card-subtitle{
+    margin-left: 15px;
+  }
+
+  ion-toolbar{
+    --background: #FF9800;
+    --color: white;
+}
+
+ion-badge{
+  --background: #4CAF50;
+}
+
+select {
+    resize: none;
+    overflow-y: visible;
+    width: 90%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #0d0101;
+}
+
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.foto-img {
+  width: 100%; /* Ajusta la imagen al 100% del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+ion-modal {
+  --height: 50%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: #FF9800;
+  --color: white;
+}
+
+#eliminarMascota{
+  width: 20%;
+}
+
+#eliminarMascota ion-icon {
+  font-size: 24px;              /* Ajustar el tamaño del ícono */
+}
